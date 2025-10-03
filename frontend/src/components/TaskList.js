@@ -49,25 +49,25 @@ const TaskList = ({ tasks, refreshTasks }) => {
       <h5 className="mb-3">Task List ({taskArray.length})</h5>
       <div className="list-group">
         {taskArray.map((task) => (
-          <div key={task._id} className="list-group-item">
-            <div className="d-flex w-100 justify-content-between">
-              <h6 className="mb-1">{task.title}</h6>
-              <small className="text-muted">
+          <div key={task._id} className="list-group-item modern-task-card">
+            <div className="d-flex w-100 justify-content-between align-items-center">
+              <h6 className="mb-1" style={{ fontWeight: 600 }}>{task.title}</h6>
+              <span className="badge bg-secondary" style={{ fontSize: '0.9em' }}>
                 {new Date(task.dueDate).toLocaleDateString()}
-              </small>
+              </span>
             </div>
             {task.description && (
-              <p className="mb-1">{task.description}</p>
+              <p className="mb-1 text-muted">{task.description}</p>
             )}
             <small className="text-muted">
               Created: {new Date(task.createdAt).toLocaleDateString()}
             </small>
-            
-            <div className="mt-3 d-flex gap-2">
+            <div className="mt-3 d-flex gap-2 align-items-center">
               <select 
                 className="form-select form-select-sm flex-grow-1" 
                 value={task.status} 
                 onChange={(e) => handleUpdate(task._id, e.target.value)}
+                style={{ minWidth: 120 }}
               >
                 <option value="Created">Created</option>
                 <option value="In Progress">In Progress</option>
@@ -79,6 +79,8 @@ const TaskList = ({ tasks, refreshTasks }) => {
               <button 
                 className="btn btn-danger btn-sm" 
                 onClick={() => handleDelete(task._id)}
+                title="Delete Task"
+                style={{ borderRadius: '50%' }}
               >
                 <i className="fas fa-trash"></i>
               </button>

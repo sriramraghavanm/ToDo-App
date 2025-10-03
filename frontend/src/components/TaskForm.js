@@ -30,9 +30,9 @@ const TaskForm = ({ refreshTasks }) => {
   };
 
   return (
-    <div className="card mb-4">
-      <div className="card-header">
-        <h5 className="mb-0">Add New Task</h5>
+    <div className="card mb-4 modern-taskform-card">
+      <div className="card-header" style={{ background: 'var(--color-accent)', borderRadius: '1rem 1rem 0 0' }}>
+        <h5 className="mb-0" style={{ fontWeight: 600 }}>Add New Task</h5>
       </div>
       <div className="card-body">
         {error && (
@@ -51,6 +51,7 @@ const TaskForm = ({ refreshTasks }) => {
               onChange={(e) => setTitle(e.target.value)} 
               required 
               disabled={loading}
+              style={{ fontWeight: 500 }}
             />
           </div>
           <div className="mb-3">
@@ -62,6 +63,7 @@ const TaskForm = ({ refreshTasks }) => {
               onChange={(e) => setDescription(e.target.value)} 
               rows="3"
               disabled={loading}
+              style={{ fontWeight: 400 }}
             />
           </div>
           <div className="row">
@@ -95,8 +97,9 @@ const TaskForm = ({ refreshTasks }) => {
           </div>
           <button 
             type="submit" 
-            className="btn btn-success" 
+            className="btn btn-success mt-2" 
             disabled={loading || !title || !dueDate}
+            style={{ minWidth: 120 }}
           >
             {loading ? 'Creating...' : 'Add Task'}
           </button>

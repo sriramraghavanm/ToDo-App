@@ -5,7 +5,7 @@ import CalendarView from '../components/CalendarView';
 import { getTasks } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
+const Dashboard = ({ onLogout }) => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -61,10 +61,7 @@ const Dashboard = () => {
         <h2>My Tasks</h2>
         <button 
           className="btn btn-outline-secondary" 
-          onClick={() => {
-            localStorage.removeItem('token');
-            navigate('/login');
-          }}
+          onClick={onLogout}
         >
           Logout
         </button>
